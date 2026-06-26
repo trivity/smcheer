@@ -4,8 +4,9 @@
 .gitignore
 node_modules
 *.log
-mobile-top.png
-mobile-foot.png
-CPI-Horizontal.png
-image (4).png
 README.md
+
+# Images: deploy only the two optimized web logos.
+*.png
+!customprint-logo.png
+!jr-rattlers-logo.png

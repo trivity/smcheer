@@ -77,7 +77,7 @@
   }
   .logo-slot{display:flex;align-items:center;justify-content:center;}
   .logo-slot img{height:42px;width:auto;object-fit:contain;}
-  .topbar .logo-slot img{height:46px;background:#fff;padding:6px 12px;border-radius:9px;box-shadow:0 2px 8px rgba(51,9,107,.28);} /* white chip: lets the dark CPI wordmark AND the full-color Rattler logo read on purple without inverting either */
+  .topbar .logo-fallback{display:inline-flex;} /* top co-brand bar is text-only wordmarks */
   .logo-fallback{
     display:none;align-items:center;font-family:"Plus Jakarta Sans";font-weight:800;
     font-size:1.05rem;letter-spacing:-.01em;line-height:1;color:#fff;white-space:nowrap;
@@ -182,6 +182,29 @@
   }
   .badge .disc .big{font-family:"Anton",sans-serif;font-size:4.4rem;line-height:.85;letter-spacing:-.01em;}
   .badge .disc .lil{font-weight:800;letter-spacing:.18em;text-transform:uppercase;font-size:.72rem;margin-top:8px;}
+
+  /* ---------- PROUD SPONSORS ---------- */
+  .sponsors{background:var(--cream);padding:56px 0 60px;text-align:center;}
+  .sponsors-label{
+    font-family:"Anton",sans-serif;text-transform:uppercase;letter-spacing:.05em;
+    color:var(--purple-700);font-size:clamp(1.3rem,3.6vw,2rem);margin:0 0 34px;
+  }
+  .sponsors-logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(32px,7vw,84px);flex-wrap:wrap;
+  }
+  .sp-logo{
+    display:flex;align-items:center;justify-content:center;background:#fff;
+    padding:clamp(16px,3vw,28px) clamp(22px,4vw,40px);border-radius:18px;
+    box-shadow:0 16px 44px -24px rgba(51,9,107,.45);
+  }
+  .sp-logo img{height:clamp(108px,17vw,160px);width:auto;max-width:100%;object-fit:contain;}
+  .sp-fallback{
+    display:none;align-items:center;font-family:"Plus Jakarta Sans";font-weight:800;
+    font-size:clamp(1.6rem,5vw,2.4rem);letter-spacing:-.01em;color:var(--ink);
+  }
+  .sp-fallback .dotit{color:var(--gold);}
+  .sp-fallback.ratt{font-family:"Anton",sans-serif;font-weight:400;text-transform:uppercase;color:var(--purple-700);}
 
   /* ---------- STEPS ---------- */
   .steps{background:var(--white);padding:72px 0;border-bottom:1px solid var(--line);}
@@ -307,14 +330,10 @@
 <header class="topbar">
   <div class="inner">
     <div class="logo-slot">
-      <img src="customprint-logo.png" alt="CustomPrint.it"
-           onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex';">
       <span class="logo-fallback">Custom<span class="dotit">Print.it</span></span>
     </div>
     <span class="sponsor-pill">Proud Sponsor</span>
     <div class="logo-slot">
-      <img src="jr-rattlers-logo.png" alt="San Marcos Jr. Rattlers Cheer"
-           onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex';">
       <span class="logo-fallback ratt-fallback">Jr. Rattlers Cheer</span>
     </div>
   </div>
@@ -353,6 +372,25 @@
             <span class="lil">Off first order</span>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROUD SPONSORS ============ -->
+<section class="sponsors">
+  <div class="wrap">
+    <p class="sponsors-label reveal">Proud Sponsors</p>
+    <div class="sponsors-logos reveal">
+      <div class="sp-logo">
+        <img src="customprint-logo.png" alt="CustomPrint.it"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <span class="sp-fallback">Custom<span class="dotit">Print.it</span></span>
+      </div>
+      <div class="sp-logo">
+        <img src="jr-rattlers-logo.png" alt="San Marcos Jr. Rattlers Cheer"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <span class="sp-fallback ratt">Jr. Rattlers Cheer</span>
       </div>
     </div>
   </div>
