@@ -1,0 +1,16 @@
+# Local-only / tooling
+.claude/
+.playwright-mcp/
+.vercel/
+node_modules/
+*.log
+
+# Local verification screenshots
+mobile-top.png
+mobile-foot.png
+
+# Original full-size logo source files (kept locally as backup, not shipped)
+CPI-Horizontal.png
+image (4).png
+
+.vercel

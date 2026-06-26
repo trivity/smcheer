@@ -1,0 +1,11 @@
+.claude
+.playwright-mcp
+.git
+.gitignore
+node_modules
+*.log
+mobile-top.png
+mobile-foot.png
+CPI-Horizontal.png
+image (4).png
+README.md
