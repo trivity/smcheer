@@ -6,19 +6,23 @@
 <title>20% Off — San Marcos Jr. Rattlers Cheer Camp | CustomPrint.it</title>
 <meta name="description" content="Proud print sponsor of the San Marcos Jr. Rattlers Cheer Camp. Fill out the form to claim 20% off your first custom order with CustomPrint.it." />
 
+<link rel="canonical" href="https://smcheer.vercel.app/" />
+<meta name="theme-color" content="#33096B" />
+<!-- Inline SVG favicon (no extra request, no 404) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2333096B'/%3E%3Ctext x='32' y='44' font-family='Arial,sans-serif' font-size='30' font-weight='bold' text-anchor='middle' fill='%23FFC93D'%3E20%25%3C/text%3E%3C/svg%3E" />
+
 <!-- ============================================================= -->
-<!--  LOGOS: drop two image files in the SAME folder as this file  -->
-<!--    1) customprint-logo.png   (your CustomPrint.it logo)        -->
-<!--    2) jr-rattlers-logo.png   (the camp's Jr. Rattlers logo)    -->
-<!--  Until those files exist, styled text placeholders show in     -->
-<!--  their place so the page never looks broken. Transparent PNG   -->
-<!--  or SVG works best. Rename your files to match, or edit the     -->
-<!--  src="" paths below.                                           -->
+<!--  LOGOS live in this folder as .webp (served) + .png (fallback):-->
+<!--  customprint-logo / jr-rattlers-logo. Text wordmarks show via  -->
+<!--  onerror if an image is ever missing.                          -->
 <!-- ============================================================= -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,700&display=swap" rel="stylesheet">
+<!-- Fonts: non-render-blocking (load as print, flip to all onload) -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,700&display=swap"></noscript>
 
 <style>
   :root{
@@ -286,11 +290,11 @@
   /* ---------- REVEAL ANIM ---------- */
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s ease;}
   .reveal.in{opacity:1;transform:none;}
-  .hero .pop{opacity:0;transform:translateY(22px);animation:popIn .8s cubic-bezier(.2,.7,.2,1) forwards;}
+  .hero .pop{opacity:0;transform:translateY(22px);animation:popIn .5s cubic-bezier(.2,.7,.2,1) forwards;}
   .hero .badge-wrap{opacity:0;transform:scale(.7) rotate(-6deg);animation:badgePop 1s cubic-bezier(.2,1.2,.3,1) .35s forwards;}
   @keyframes popIn{to{opacity:1;transform:none;}}
   @keyframes badgePop{to{opacity:1;transform:none;}}
-  .d1{animation-delay:.05s;}.d2{animation-delay:.18s;}.d3{animation-delay:.31s;}.d4{animation-delay:.44s;}.d5{animation-delay:.57s;}
+  .d1{animation-delay:.04s;}.d2{animation-delay:.10s;}.d3{animation-delay:.16s;}.d4{animation-delay:.22s;}.d5{animation-delay:.28s;}
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width:880px){
@@ -339,6 +343,8 @@
   </div>
 </header>
 
+<main>
+
 <!-- ============ HERO ============ -->
 <section class="hero">
   <canvas id="confetti"></canvas>
@@ -383,13 +389,19 @@
     <p class="sponsors-label reveal">Proud Sponsors</p>
     <div class="sponsors-logos reveal">
       <div class="sp-logo">
-        <img src="customprint-logo.png" alt="CustomPrint.it"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <picture>
+          <source srcset="customprint-logo.webp" type="image/webp">
+          <img src="customprint-logo.png" width="1000" height="252" alt="CustomPrint.it"
+               onerror="this.style.display='none';this.closest('picture').nextElementSibling.style.display='flex';">
+        </picture>
         <span class="sp-fallback">Custom<span class="dotit">Print.it</span></span>
       </div>
       <div class="sp-logo">
-        <img src="jr-rattlers-logo.png" alt="San Marcos Jr. Rattlers Cheer"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <picture>
+          <source srcset="jr-rattlers-logo.webp" type="image/webp">
+          <img src="jr-rattlers-logo.png" width="600" height="600" alt="San Marcos Jr. Rattlers Cheer"
+               onerror="this.style.display='none';this.closest('picture').nextElementSibling.style.display='flex';">
+        </picture>
         <span class="sp-fallback ratt">Jr. Rattlers Cheer</span>
       </div>
     </div>
@@ -443,7 +455,8 @@
       </div>
       <div class="form-frame">
         <iframe
-          src="https://links.customprint.it/widget/form/ExbM2JuPWh90kux3xGhN"
+          loading="lazy"
+          data-src="https://links.customprint.it/widget/form/ExbM2JuPWh90kux3xGhN"
           id="inline-ExbM2JuPWh90kux3xGhN"
           data-layout="{'id':'INLINE'}"
           data-trigger-type="alwaysShow"
@@ -458,6 +471,7 @@
           data-form-id="ExbM2JuPWh90kux3xGhN"
           title="QR Code Form-Jr Rattlers Cheer Camp 2026">
         </iframe>
+        <noscript><p style="text-align:center;padding:24px 16px;margin:0;"><a href="https://links.customprint.it/widget/form/ExbM2JuPWh90kux3xGhN">Open the 20% off form →</a></p></noscript>
       </div>
     </div>
     <p class="form-note">We'll only use your info to send your discount and the occasional team-gear update. No spam, ever.</p>
@@ -496,6 +510,8 @@
   </div>
 </section>
 
+</main>
+
 <!-- ============ FOOTER ============ -->
 <footer class="foot">
   <div class="wrap">
@@ -503,13 +519,19 @@
     <p class="pledge reveal">Proud official print sponsor of the 2026 San Marcos Jr. Rattlers Cheer Camp.</p>
     <div class="foot-logos reveal">
       <div class="logo-slot">
-        <img src="customprint-logo.png" alt="CustomPrint.it"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex';">
+        <picture>
+          <source srcset="customprint-logo.webp" type="image/webp">
+          <img src="customprint-logo.png" width="1000" height="252" alt="CustomPrint.it"
+               onerror="this.style.display='none';this.closest('picture').nextElementSibling.style.display='inline-flex';">
+        </picture>
         <span class="logo-fallback">Custom<span class="dotit">Print.it</span></span>
       </div>
       <div class="logo-slot">
-        <img src="jr-rattlers-logo.png" alt="San Marcos Jr. Rattlers Cheer"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex';">
+        <picture>
+          <source srcset="jr-rattlers-logo.webp" type="image/webp">
+          <img src="jr-rattlers-logo.png" width="600" height="600" alt="San Marcos Jr. Rattlers Cheer"
+               onerror="this.style.display='none';this.closest('picture').nextElementSibling.style.display='inline-flex';">
+        </picture>
         <span class="logo-fallback ratt-fallback">Jr. Rattlers Cheer</span>
       </div>
     </div>
@@ -522,8 +544,36 @@
   </div>
 </footer>
 
-<!-- form embed script -->
-<script src="https://links.customprint.it/js/form_embed.js"></script>
+<!-- Form embed script: loaded when the form nears the viewport (or on first
+     interaction) so the third-party JS doesn't block initial load. The iframe
+     above is loading="lazy" and renders the full form on its own at its
+     data-height; this script only adds the auto-resize behavior. -->
+<script>
+  (function(){
+    var loaded=false;
+    function loadEmbed(){
+      if(loaded) return; loaded=true;
+      var f=document.getElementById('inline-ExbM2JuPWh90kux3xGhN');
+      if(f && !f.src && f.getAttribute('data-src')){ f.src=f.getAttribute('data-src'); }
+      var s=document.createElement('script');
+      s.src="https://links.customprint.it/js/form_embed.js";
+      s.async=true;
+      document.body.appendChild(s);
+    }
+    var target=document.getElementById('claim');
+    if('IntersectionObserver' in window && target){
+      var io=new IntersectionObserver(function(entries){
+        if(entries.some(function(e){return e.isIntersecting;})){ loadEmbed(); io.disconnect(); }
+      },{rootMargin:'0px 0px'});
+      io.observe(target);
+    } else {
+      loadEmbed();
+    }
+    ['scroll','touchstart','mousemove','keydown','pointerdown'].forEach(function(ev){
+      window.addEventListener(ev, loadEmbed, {once:true, passive:true});
+    });
+  })();
+</script>
 
 <script>
   /* ---- Scroll reveals ---- */
@@ -553,8 +603,8 @@
     }
   })();
 
-  /* ---- One-shot confetti burst on load ---- */
-  (function(){
+  /* ---- One-shot confetti burst (deferred until after first paint) ---- */
+  function startConfetti(){
     var canvas=document.getElementById('confetti');
     if(!canvas) return;
     if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -597,7 +647,9 @@
       else{ctx.clearRect(0,0,W,H);}
     }
     requestAnimationFrame(frame);
-  })();
+  }
+  if(document.readyState==='complete'){ setTimeout(startConfetti,60); }
+  else { window.addEventListener('load', function(){ setTimeout(startConfetti,60); }); }
 </script>
 </body>
 </html>
