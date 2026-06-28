@@ -398,8 +398,8 @@
       </div>
       <div class="sp-logo">
         <picture>
-          <source srcset="jr-rattlers-logo.webp" type="image/webp">
-          <img src="jr-rattlers-logo.png" width="600" height="600" alt="San Marcos Jr. Rattlers Cheer"
+          <source srcset="jr-rattlers-logo.webp 1x, jr-rattlers-logo-2x.webp 2x" type="image/webp">
+          <img src="jr-rattlers-logo.png" width="400" height="400" alt="San Marcos Jr. Rattlers Cheer"
                onerror="this.style.display='none';this.closest('picture').nextElementSibling.style.display='flex';">
         </picture>
         <span class="sp-fallback ratt">Jr. Rattlers Cheer</span>
@@ -528,8 +528,8 @@
       </div>
       <div class="logo-slot">
         <picture>
-          <source srcset="jr-rattlers-logo.webp" type="image/webp">
-          <img src="jr-rattlers-logo.png" width="600" height="600" alt="San Marcos Jr. Rattlers Cheer"
+          <source srcset="jr-rattlers-logo.webp 1x, jr-rattlers-logo-2x.webp 2x" type="image/webp">
+          <img src="jr-rattlers-logo.png" width="400" height="400" alt="San Marcos Jr. Rattlers Cheer"
                onerror="this.style.display='none';this.closest('picture').nextElementSibling.style.display='inline-flex';">
         </picture>
         <span class="logo-fallback ratt-fallback">Jr. Rattlers Cheer</span>
@@ -611,22 +611,24 @@
     var ctx=canvas.getContext('2d');
     var W,H,DPR=window.devicePixelRatio||1;
     function size(){ W=canvas.clientWidth;H=canvas.clientHeight;canvas.width=W*DPR;canvas.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0); }
-    size(); window.addEventListener('resize',size);
     var colors=['#FFC93D','#F4B41A','#FFFFFF','#F472B6','#8B5CF6','#EDE4FF'];
     var pieces=[];
-    for(var i=0;i<130;i++){
-      pieces.push({
-        x:Math.random()*W,
-        y:-20-Math.random()*H*0.5,
-        w:6+Math.random()*7,
-        h:8+Math.random()*9,
-        c:colors[(Math.random()*colors.length)|0],
-        vy:2.4+Math.random()*3.6,
-        vx:(Math.random()-0.5)*1.8,
-        rot:Math.random()*Math.PI,
-        vr:(Math.random()-0.5)*0.3,
-        sway:Math.random()*2
-      });
+    function makePieces(){
+      pieces=[];
+      for(var i=0;i<130;i++){
+        pieces.push({
+          x:Math.random()*W,
+          y:-20-Math.random()*H*0.5,
+          w:6+Math.random()*7,
+          h:8+Math.random()*9,
+          c:colors[(Math.random()*colors.length)|0],
+          vy:2.4+Math.random()*3.6,
+          vx:(Math.random()-0.5)*1.8,
+          rot:Math.random()*Math.PI,
+          vr:(Math.random()-0.5)*0.3,
+          sway:Math.random()*2
+        });
+      }
     }
     var start=null,DURATION=3400;
     function frame(t){
@@ -646,7 +648,10 @@
       if(elapsed<DURATION){requestAnimationFrame(frame);}
       else{ctx.clearRect(0,0,W,H);}
     }
-    requestAnimationFrame(frame);
+    var resizeQueued=false;
+    window.addEventListener('resize',function(){ if(resizeQueued) return; resizeQueued=true; requestAnimationFrame(function(){ resizeQueued=false; size(); }); });
+    /* Read layout inside rAF so canvas sizing never forces a synchronous reflow */
+    requestAnimationFrame(function(){ size(); makePieces(); requestAnimationFrame(frame); });
   }
   if(document.readyState==='complete'){ setTimeout(startConfetti,60); }
   else { window.addEventListener('load', function(){ setTimeout(startConfetti,60); }); }
